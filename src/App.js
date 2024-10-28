@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import LanguageDetector from "i18next-browser-languagedetector";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import arTranslation from './Translate/Ar.json';
+import enTranslation from './Translate/En.json';
 function App() {
+  i18n
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .init({
+    lng: "ar",
+    resources: {
+      en: {
+        translation: enTranslation,
+      },
+      ar: {
+        translation: arTranslation,
+      },
+    },
+    fallbackLng: "en",
+    debug: true,
+    interpolation: {
+      escapeValue: false,
+    },
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
     </div>
   );
 }
-
 export default App;
