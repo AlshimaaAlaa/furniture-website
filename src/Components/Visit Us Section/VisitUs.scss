@@ -1,0 +1,20 @@
+.visitusContainer {
+  font-family: "Tajawal", sans-serif;
+  background-color: #260701;
+  color: #fff;
+  padding: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@media (max-width: 768px) {
+  .visitusContainer {
+    padding:30px;
+    flex-direction: column-reverse;
+    img{
+      width:355px ;
+      margin: auto;
+      height: 200px;
+    }
+  }
+}

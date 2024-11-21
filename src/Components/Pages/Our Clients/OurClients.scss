@@ -1,0 +1,45 @@
+.ourClientsContainer {
+  font-family: "Tajawal", sans-serif;
+  .ourClientsContainer__item {
+    padding: 0px 100px;
+  }
+  .text {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    .user {
+      font-size: 27px;
+      font-weight: bolder;
+      margin-right: 10px;
+    }
+  }
+  .client-opinion {
+    border-right: 3px solid #000;
+  }
+  .whyClientsChooseUs {
+    background-color: #f5f5dc;
+    padding: 50px 100px 50px 100px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    .whyClientsChooseUs__item {
+      display: flex;
+      align-items: center;
+      img {
+        margin-left: 10px;
+        width: 29px;
+        height: 29px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ourClientsContainer {
+    .ourClientsContainer__item {
+      padding: 0px 20px;
+    }
+    .whyClientsChooseUs {
+      padding: 50px 20px 50px 20px;
+    }
+  }
+}

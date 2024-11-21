@@ -1,0 +1,97 @@
+.headerContainer {
+  font-family: "Tajawal", sans-serif;
+  padding: 100px;
+  .amjad {
+    p {
+      width: 400px;
+    }
+    .amjad-product {
+      width: 700px;
+      height: 350px;
+      border-radius: 10px;
+    }
+  }
+  .amjad-media {
+    height: 40px;
+    margin: 0px 50px 0px 20px;
+  }
+  .sallon {
+    margin: 0px 20px 0px 20px;
+    height: 40px;
+  }
+  .reasons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 50px;
+    border: 1px solid lightgrey;
+    width: 90%;
+    margin: 50px auto;
+    p {
+      margin-bottom: 0px;
+      padding: 0px 10px 0px 10px;
+    }
+    .reasons__item {
+      border-right: 3px solid lightgray;
+      margin: 10px;
+      &:first-child {
+        border-right: none;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .headerContainer {
+    padding: 50px;
+    .amjad {
+      flex-direction: column;
+      h1,
+      p {
+        padding-right: 20px;
+      }
+      p {
+        width: 340px;
+      }
+      .amjad-product {
+        width: 350px;
+        height: 300px;
+        border-radius: 10px;
+      }
+    }
+    .amjad-media {
+      margin: 0px 10px 0px 20px;
+      height: 50px;
+    }
+
+    .sallon {
+      margin: 0px 0px 0px 0px;
+      height: 50px;
+    }
+    .reasons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 10px;
+      border: 1px solid lightgrey;
+      width: 100%;
+      margin: 50px auto;
+      font-size: 20px;
+      p {
+        margin-bottom: 0px;
+        padding: 0px 10px 0px 10px;
+      }
+      .reasons__item {
+        border-right: none;
+        border-bottom: 1px solid lightgray;
+        margin: 10px;
+        &:first-child {
+          border-right: none;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.policyContainer {
+  padding: 0px 100px;
+  font-family: "Tajawal", sans-serif;
+  .text {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    .privacy {
+      font-size: 27px;
+      font-weight: bolder;
+      margin-right: 10px;
+    }
+  }
+  .span {
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  h5 {
+    font-size: 20px;
+  }
+  p {
+    color: #2b2b2b;
+  }
+}
+@media (max-width: 768px) {
+  .policyContainer {
+    padding: 0px 20px;
+  }
+}

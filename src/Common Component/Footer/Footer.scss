@@ -1,0 +1,55 @@
+.footer {
+  width: 100%;
+  padding: 50px 0px 20px 0px;
+  font-family: "Tajawal", sans-serif;
+
+  .row-items {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    h5 {
+      font-size: 20px;
+    }
+    a {
+      text-decoration: none;
+    }
+    .logo {
+      width: 130px;
+      height: 103.4px;
+    }
+    .logo-text {
+      text-align: center;
+      color: #909090;
+    }
+  }
+  .hr {
+    width: 93%;
+    margin-top: 30px;
+    font-weight: bolder;
+    color: lightgray;
+  }
+  .reserved-rights {
+    padding: 10px 50px;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    .row-items {
+      padding: 40px;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 18px;
+      .logo-text {
+        text-align: right;
+      }
+    }
+    .hr {
+      width: 90%;
+      margin: 30px auto;
+    }
+    .reserved-rights {
+      padding: 20px;
+      text-align: center;
+    }
+  }
+}

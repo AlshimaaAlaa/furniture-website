@@ -1,0 +1,143 @@
+.contactusContainer {
+  padding: 0px 100px;
+  font-family: "Tajawal", sans-serif;
+  h3 {
+    font-size: 20px;
+  }
+  .location {
+    display: flex;
+    align-items: center;
+    // justify-content: space-around;
+    .map {
+      width: 553px;
+      height: 290px;
+    }
+  }
+  .contactForm {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .form {
+      background-color: #f5f5dc;
+      border-radius: 10px;
+      padding: 50px;
+      label {
+        color: #2b2b2b;
+        display: block;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+      .input {
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        background-color: transparent;
+        width: 350px;
+        outline: none;
+      }
+      .message {
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        background-color: transparent;
+        width: 350px;
+        height: 100px;
+        outline: none;
+      }
+      button {
+        background-color: #260701;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        width: 380px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 20px;
+        height: 52px;
+      }
+      .error {
+        color: red;
+        font-size: 10px;
+        font-weight: bolder;
+        margin-top: 5px;
+      }
+    }
+  }
+  .close-modal {
+    background-color: transparent;
+    color: #000;
+    font-weight: bolder;
+    cursor: pointer;
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactusContainer {
+    padding: 0px 20px;
+    // font-family: "Tajawal", sans-serif;
+    // h3 {
+    //   font-size: 20px;
+    // }
+    .location {
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      // justify-content: space-around;
+      .map {
+        margin-top: 20px;
+        width: 360px;
+        height: 270px;
+      }
+    }
+    .contactForm {
+      margin-top: 50px;
+      margin-bottom: 80px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-around;
+      .form {
+        // background-color: #f5f5dc;
+        // border-radius: 10px;
+        padding: 30px;
+        // label {
+        //   color: #2b2b2b;
+        //   display: block;
+        //   margin-bottom: 10px;
+        //   margin-top: 10px;
+        // }
+        .input {
+          // padding: 10px;
+          // border: 1px solid lightgray;
+          // border-radius: 10px;
+          // background-color: transparent;
+          width: 290px;
+          // outline: none;
+        }
+        .message {
+          // padding: 10px;
+          // border: 1px solid lightgray;
+          // border-radius: 10px;
+          // background-color: transparent;
+          width: 290px;
+          // height: 100px;
+          // outline: none;
+        }
+        button {
+          // background-color: #260701;
+          // color: #fff;
+          // text-align: center;
+          // padding: 10px;
+          width: 290px;
+          // border: none;
+          // border-radius: 10px;
+          // margin-top: 20px;
+          // height: 52px;
+        }
+      }
+    }
+  }
+}

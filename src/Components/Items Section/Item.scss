@@ -1,0 +1,48 @@
+.itemContainer {
+  font-family: "Tajawal", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 70px;
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 35%;
+    h3 {
+      text-align: center;
+      margin-bottom: 0px;
+    }
+    button {
+      width: 200px;
+      border-radius: 50px;
+      background-color: #00241b;
+      color: #fff;
+      font-size: 16px;
+    }
+    img {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      width: 200px;
+      border-radius: 10px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .itemContainer {
+    flex-direction: column;
+    .item {
+      width: 350px;
+      margin-top: 20px;
+      button {
+        width: 120px;
+        height: 38px;
+      }
+      img {
+        width: 150px;
+      }
+    }
+  }
+}

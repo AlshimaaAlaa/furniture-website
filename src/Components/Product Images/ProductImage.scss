@@ -1,0 +1,43 @@
+.products {
+  font-family: "Tajawal", sans-serif;
+  h1 {
+    margin-bottom: 0;
+    font-size: 40px;
+  }
+  p {
+    font-size: 17px;
+  }
+  .product-image-gallery {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+    img {
+      width: 90%;
+      height: 260px;
+      object-fit: fill;
+      border-radius: 10px;
+      margin: auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    p {
+      font-size: 17px;
+    }
+    .product-image-gallery {
+      width: 100%;
+      margin: auto;
+      grid-template-columns: repeat(1, 1fr);
+      img {
+        width: 250px;
+        height: 190px;
+        margin: 0px auto ;
+      }
+    }
+  }
+}

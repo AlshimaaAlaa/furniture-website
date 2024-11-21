@@ -1,0 +1,31 @@
+.section4Container {
+  font-family: "Tajawal", sans-serif;
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  .product {
+    width: 400px;
+    height: 450px;
+    border-radius: 40px;
+  }
+  button {
+    background-color: #00241b;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 16px;
+    width: 180px;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .section4Container {
+    padding: 20px;
+    flex-direction: column;
+    .product {
+      width: 350px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  }
+}
