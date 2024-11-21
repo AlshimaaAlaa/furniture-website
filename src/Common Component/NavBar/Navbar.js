@@ -24,8 +24,8 @@ function Navbar() {
         <div className="social">
           <a href="" target=""><img src="/assets/images/twitter.png" alt="Twitter" /></a>
           <a href="" target=""><img src="/assets/images/linkedin.png" alt="LinkedIn" /></a>
-          <a href="" target=""><img src="/assets/images/instegram.png" alt="Instagram" /></a>
-          <a href="" target=""><img src="/assets/images/facebook.png" alt="Facebook" /></a>
+          <a href="https://www.instagram.com/amgad_furniture202?igsh=NTFscXZlZmpiMm82" target="blank"><img src="/assets/images/instegram.png" alt="Instagram" /></a>
+          <a href="https://www.facebook.com/profile.php?id=61568220981761&mibextid=ZbWKwL" target="blank"><img src="/assets/images/facebook.png" alt="Facebook" /></a>
         </div>
       </div>
       <hr className="hr" />
