@@ -58,6 +58,7 @@ function Classic() {
           fontSize: "40px",
           marginTop: "100px",
           color: "red",
+          fontFamily: "Dancing Script",
         }}
       >
         {error}
