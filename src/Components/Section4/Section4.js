@@ -65,8 +65,8 @@ function Section4() {
             </span>
           </div>
         </div>
-        <div>
-          <button style={{cursor:"pointer"}} onClick={()=>navigate('')}>تصفح الأن</button>
+        <div className="navigate-btn">
+          <button style={{cursor:"pointer"}} onClick={()=>navigate('/Modren')}>تصفح الأن</button>
         </div>
       </div>
       <div>

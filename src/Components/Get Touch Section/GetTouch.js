@@ -4,6 +4,7 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Modal from "../../Common Component/Modal/Modal";
 function GetTouch() {
+  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(false);
   const intialValues = {
@@ -19,6 +20,7 @@ function GetTouch() {
     message: Yup.string().required("يرجي ادخال رسالة الدعم هنا"),
   });
   const handleSubmit = async (values) => {
+    setLoading(true);
     const items = {
       name: values["name"],
       email: values["email"],
@@ -37,15 +39,18 @@ function GetTouch() {
       const result = await response.json();
       console.log(result);
       if (response.ok) {
+        setLoading(false);
         console.log("success");
         setShowModal(true);
         setError(false);
       } else {
+        setLoading(false);
         console.log("failed");
         setError(true);
         setShowModal(false);
       }
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   };
@@ -114,7 +119,7 @@ function GetTouch() {
                   style={{ cursor: "pointer", fontSize: "16px" }}
                   type="submit"
                 >
-                  ارسال
+                  {loading ? "جاري التحميل...." : "ارسال"}
                 </button>
               </div>
             </Form>
@@ -155,7 +160,9 @@ function GetTouch() {
                 width={"120px"}
               />
             </div>
-            <h3 style={{ color: "red" }}> لقد تم ارسال رسالتك بنجاح </h3>
+            <h3 style={{ color: "red" }}>
+              حدث خطأ أثناء ارسال رسالتك حاول مرةأخري
+            </h3>
           </div>
         </Modal>
       )}

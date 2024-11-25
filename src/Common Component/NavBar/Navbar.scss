@@ -18,7 +18,7 @@
         margin-right: 20px;
 
         img {
-          margin-right: 10px;
+          margin-right: 5px;
         }
 
         p {
@@ -34,7 +34,7 @@
       img {
         margin-left: 10px;
         cursor: pointer;
-        width: 20px;
+        width: 18px;
       }
     }
   }
@@ -138,14 +138,13 @@
         display: flex;
         flex-direction: row;
         margin-top: 10px;
-        .phone,
-        .email {
+        .phone {
           display: flex;
           align-items: center;
-          margin-right: 20px;
+          margin-left: 0px;
 
           img {
-            margin-right: 10px;
+            margin-left: 5;
           }
 
           p {
@@ -156,7 +155,6 @@
         }
       }
       .social {
-        // display: none;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -170,7 +168,6 @@
     }
     .navbar-bottom {
       display: flex;
-      // display: none;
       align-items: center;
       justify-content: space-around;
       padding: 10px 20px;
@@ -204,7 +201,6 @@
       }
       .menu {
         display: flex;
-        // font-size: 10px;
         align-items: center;
         a {
           text-decoration: none;

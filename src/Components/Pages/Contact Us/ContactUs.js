@@ -5,7 +5,8 @@ import * as Yup from "yup";
 import Modal from "../../../Common Component/Modal/Modal";
 function ContactUs() {
   const [showModal, setShowModal] = useState(false);
-  const [error , setError] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const intialValues = {
     name: "",
     email: "",
@@ -26,6 +27,7 @@ function ContactUs() {
       message: values["message"],
     };
     try {
+      setLoading(true);
       const response = await fetch("http://104.248.251.235:8080/support/", {
         method: "POST",
         headers: {
@@ -37,15 +39,18 @@ function ContactUs() {
       const result = await response.json();
       console.log(result);
       if (response.ok) {
+        setLoading(false);
         console.log("success");
         setShowModal(true);
         setError(false);
       } else {
+        setLoading(false);
         console.log("failed");
         setError(true);
         setShowModal(false);
       }
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   };
@@ -72,7 +77,7 @@ function ContactUs() {
         <div style={{ margin: "0px 10px 0px 10px" }}>
           <span>نحن نرحب بك خلال ساعات العمل الرسمية التالية:</span>
           <br />
-          <span>⏰ الأحد - الخميس: 9:00 صباحًا - 6:00 مساءً</span>
+          <span>⏰ الأحد - الخميس: 9:00 صباحًا - 9:00 مساءً</span>
           <br />
           <span>⏰ الجمعة - السبت: إجازة</span>
         </div>
@@ -85,7 +90,7 @@ function ContactUs() {
             طلباتك.
           </span>
           <br />
-          <span>📞 رقم الهاتف: [رقم الهاتف]</span>
+          <span>📞 رقم الهاتف: [01559007451 ]</span>
         </div>
       </div>
       <div>
@@ -97,7 +102,19 @@ function ContactUs() {
           </span>
           <br />
           <span style={{ margin: "0px 5px 0px 5px" }}>
-            ✉️ البريد الإلكتروني: [بريد إلكتروني المصنع]
+            ✉️ البريد الإلكتروني: [{" "}
+            <a
+              style={{
+                textDecoration: "none",
+                color: "darkblue",
+                fontWeight: "bolder",
+              }}
+              href="http://www.amgadfurniture202@gmail.com"
+              target="blank"
+            >
+              amgadfurniture202@gmail.com
+            </a>{" "}
+            ]
           </span>
         </div>
       </div>
@@ -110,15 +127,51 @@ function ContactUs() {
           </span>
           <br />
           <span style={{ margin: "0px 5px 0px 5px" }}>
-            .فيسبوك: [رابط صفحة فيسبوك]
+            .فيسبوك: [
+            <a
+              style={{
+                textDecoration: "none",
+                color: "darkblue",
+                fontWeight: "bolder",
+              }}
+              href="https://www.facebook.com/profile.php?id=61568220981761"
+              target="blank"
+            >
+              https://www.facebook.com/profile.php?id=61568220981761
+            </a>
+            ]
           </span>
           <br />
           <span style={{ margin: "0px 5px 0px 5px" }}>
-            .إنستغرام: [رابط صفحة إنستغرام]
+            .إنستغرام: [
+            <a
+              style={{
+                textDecoration: "none",
+                color: "darkblue",
+                fontWeight: "bolder",
+              }}
+              href="https://www.instagram.com/amgad_furniture202/"
+              target="blank"
+            >
+              https://www.instagram.com/amgad_furniture202/
+            </a>
+            ]
           </span>
           <br />
           <span style={{ margin: "0px 5px 0px 5px" }}>
-            .تويتر: [رابط حساب تويتر]
+            .لينكد ان: [
+            <a
+              style={{
+                textDecoration: "none",
+                color: "darkblue",
+                fontWeight: "bolder",
+              }}
+              href="https://www.linkedin.com/in/amgad-furniture-37452433a/"
+              target="blank"
+            >
+              https://www.linkedin.com/in/amgad-furniture-37452433a/
+            </a>
+            ]
           </span>
         </div>
       </div>
@@ -136,12 +189,9 @@ function ContactUs() {
           <span>
             📍 العنوان:
             <br />
-            [عنوان المصنع بالتفصيل]
+            [دمياط / شطا أمام الحمايه المدنيه]
           </span>
         </div>
-        {/* <div>
-          <img src="/assets/images/map.png" alt="map" className="map" />
-        </div> */}
       </div>
       {/* contact form */}
       <div className="contactForm">
@@ -198,7 +248,7 @@ function ContactUs() {
                   style={{ fontSize: "16px", cursor: "pointer" }}
                   type="submit"
                 >
-                  ارسال
+                  {loading ? "جاري  التحميل..." : "ارسال"}
                 </button>
               </div>
             </Form>
@@ -251,7 +301,9 @@ function ContactUs() {
                 width={"120px"}
               />
             </div>
-            <h3 style={{ color: "red" }}> لقد تم ارسال رسالتك بنجاح </h3>
+            <h3 style={{ color: "red" }}>
+              حدث خطأ أثناء ارسال رسالتك حاول مرةأخري
+            </h3>
           </div>
         </Modal>
       )}

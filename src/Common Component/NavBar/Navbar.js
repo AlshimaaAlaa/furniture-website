@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
@@ -11,21 +10,47 @@ function Navbar() {
       <div className="navbar-top" style={{ flexDirection: "" }}>
         <div className="contact-info">
           <div className="email">
-            <p>amjadD@gmail.com</p>
+            <p>
+              <a
+                href="https://www.amgadfurniture202@gmail.com "
+                target="blank"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                amgadfurniture202@gmail.com
+              </a>
+            </p>
             <img src="/assets/images/mail.png" alt="email" />
           </div>
           <div className="phone">
-            <p>
-              2010005456325 + <br /> 964666556998 +
-            </p>
+            <p>201559007451 +</p>
             <img src="/assets/images/call.png" alt="phone" />
           </div>
         </div>
         <div className="social">
-          <a href="" target=""><img src="/assets/images/twitter.png" alt="Twitter" /></a>
-          <a href="" target=""><img src="/assets/images/linkedin.png" alt="LinkedIn" /></a>
-          <a href="https://www.instagram.com/amgad_furniture202?igsh=NTFscXZlZmpiMm82" target="blank"><img src="/assets/images/instegram.png" alt="Instagram" /></a>
-          <a href="https://www.facebook.com/profile.php?id=61568220981761&mibextid=ZbWKwL" target="blank"><img src="/assets/images/facebook.png" alt="Facebook" /></a>
+          <a
+            href="https://www.tiktok.com/@amgad_furniture0?_t=8rYes9Pa7w9&_r=1"
+            target="blank"
+          >
+            <img src="/assets/images/3046120.png" alt="TikTok" />
+          </a>
+          <a
+            href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEfoA2V7BXt7QAAAZNkYzrIA16gkG6sUS2OwNhc9g15akqwprij5chNWJNFhZLL_99-LTxfAiGioaxG6nzKm2nkOhCt_N2tmls9aAHBf1bxGaMfQFhQfgSJ8T6YDF6FL2wm3pc=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Famgad-furniture-37452433a%2F"
+            target="blank"
+          >
+            <img src="/assets/images/linkedin.png" alt="LinkedIn" />
+          </a>
+          <a
+            href="https://www.instagram.com/amgad_furniture202/"
+            target="blank"
+          >
+            <img src="/assets/images/instegram.png" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.facebook.com/people/%D8%A3%D9%85%D9%80%D8%AC%D8%A7%D8%AF/61568220981761/"
+            target="blank"
+          >
+            <img src="/assets/images/facebook.png" alt="Facebook" />
+          </a>
         </div>
       </div>
       <hr className="hr" />

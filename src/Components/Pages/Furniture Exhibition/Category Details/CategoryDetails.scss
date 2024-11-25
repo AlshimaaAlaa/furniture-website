@@ -1,6 +1,6 @@
 .category-details {
   font-family: "Tajawal", sans-serif;
-  padding:100px 50px;
+  padding: 100px 50px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
@@ -54,7 +54,7 @@
 @media (max-width: 768px) {
   .category-details {
     font-family: "Tajawal", sans-serif;
-    padding:100px 50px;
+    padding: 100px 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -84,7 +84,7 @@
           border: 2px solid transparent;
           border-radius: 4px;
           transition: border-color 0.3s;
-  
+
           &.active {
             border-color: #007bff;
           }

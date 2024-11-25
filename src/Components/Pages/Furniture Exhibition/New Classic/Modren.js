@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 function Modren() {
   const [products, setProducts] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sortOption, setSortOption] = useState("none");
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchProducts() {
@@ -19,13 +21,15 @@ function Modren() {
             },
           }
         );
-
+  
         if (response.data.status === "success") {
-          // Filter products to only include those with the "Modern" category
+          console.log("success modren");
+          // Filter products with a valid category and name "Modern"
           const modernProducts = response.data.data.filter(
-            (product) => product.category.name === "Modern"
+            (product) => product.category && product.category.name === "Modern"
           );
           setProducts(modernProducts);
+          setSortedProducts(modernProducts); 
         } else {
           setError("Failed to fetch products.");
         }
@@ -36,14 +40,31 @@ function Modren() {
         setLoading(false);
       }
     }
-
+  
     fetchProducts();
   }, []);
+  
+
+  useEffect(() => {
+    // Sort products 
+    let sorted = [...products];
+    if (sortOption === "low-to-high") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "high-to-low") {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    setSortedProducts(sorted);
+  }, [sortOption, products]);
 
   if (loading)
     return (
       <div
-        style={{ textAlign: "center", fontSize: "40px", marginTop: "100px"  , fontFamily:"Dancing Script"}}
+        style={{
+          textAlign: "center",
+          fontSize: "40px",
+          marginTop: "100px",
+          fontFamily: "Dancing Script",
+        }}
       >
         Loading...
       </div>
@@ -78,12 +99,35 @@ function Modren() {
         </p>
       </div>
 
-      <div
-        className="products"
-        style={{ border: "", margin: "30px 0px 20px 0px", width: "" }}
-      >
+      {/* Price Filter */}
+      <div className="filterContainer">
+        <label
+          htmlFor="sort"
+          style={{ margin: "10px", fontWeight: "bold", display: "inline" }}
+        >
+          ترتيب حسب :
+        </label>
+        <select
+          id="sort"
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          style={{
+            padding: "5px 20px 5px 20px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "14px",
+          }}
+        >
+          <option value="none">اختر</option>
+          <option value="low-to-high">السعر من الأقل إلى الأعلى</option>
+          <option value="high-to-low">السعر من الأعلى إلى الأقل</option>
+        </select>
+      </div>
+
+      <div className="products">
         <ul className="product-list">
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <li
               key={product.id}
               className="product-item"
@@ -96,7 +140,6 @@ function Modren() {
                     key={image.id}
                     src={image.image}
                     alt={`Product${product.name}image`}
-                    style={{ width: "", margin: "" }}
                   />
                 ))}
               </div>
@@ -108,12 +151,8 @@ function Modren() {
                   justifyContent: "space-around",
                 }}
               >
-                <h3>
-                  {product.name === "modern chair"
-                    ? "كرسي حديث"
-                    : "modren chair"}
-                </h3>
-                <p> {product.price} جنية</p>
+                <h3>{product.name}</h3>
+                <p>{product.price} جنية</p>
               </div>
               <hr />
             </li>

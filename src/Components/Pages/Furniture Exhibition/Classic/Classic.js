@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable no-mixed-operators */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Classic.scss";
@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 function Classic() {
   const [products, setProducts] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const [sortOption, setSortOption] = useState("none");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -21,13 +23,15 @@ function Classic() {
             },
           }
         );
-
+  
         if (response.data.status === "success") {
-          // Filter products to only include those with the "Classic" category
-          const classicProducts = response.data.data.filter(
-            (product) => product.category.name === "كلاسيك"
+          console.log("success modren");
+          // Filter products with a valid category and name "Modern"
+          const modernProducts = response.data.data.filter(
+            (product) => product.category && product.category.name === "كلاسيك"  || "classic"
           );
-          setProducts(classicProducts);
+          setProducts(modernProducts);
+          setSortedProducts(modernProducts); 
         } else {
           setError("Failed to fetch products.");
         }
@@ -38,14 +42,30 @@ function Classic() {
         setLoading(false);
       }
     }
-
+  
     fetchProducts();
   }, []);
+  
+  useEffect(() => {
+    // Sort products
+    let sorted = [...products];
+    if (sortOption === "low-to-high") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "high-to-low") {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    setSortedProducts(sorted);
+  }, [sortOption, products]);
 
   if (loading)
     return (
       <div
-        style={{ textAlign: "center", fontSize: "40px", marginTop: "100px" ,fontFamily:"Dancing Script" }}
+        style={{
+          textAlign: "center",
+          fontSize: "40px",
+          marginTop: "100px",
+          fontFamily: "Dancing Script",
+        }}
       >
         Loading...
       </div>
@@ -80,9 +100,34 @@ function Classic() {
         </p>
       </div>
 
+      {/* Price Filter */}
+      <div className="filterContainer">
+        <label
+          htmlFor="sort"
+          style={{ margin: "10px", fontWeight: "bold", display: "inline" }}
+        >
+          ترتيب حسب :
+        </label>
+        <select
+          id="sort"
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          style={{
+            padding: "5px 20px 5px 20px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "14px",
+          }}
+        >
+          <option value="none">اختر</option>
+          <option value="low-to-high">السعر من الأقل إلى الأعلى</option>
+          <option value="high-to-low">السعر من الأعلى إلى الأقل</option>
+        </select>
+      </div>
       <div className="products">
         <ul className="product-list">
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <li
               key={product.id}
               className="product-item"
@@ -95,7 +140,7 @@ function Classic() {
                     <img
                       key={image.id}
                       src={image.image}
-                      alt={`Product ${product.name} image`}
+                      alt={`Product${product.name}image`}
                       style={{ width: "150px", margin: "5px" }}
                     />
                   ))

@@ -42,5 +42,4 @@ function ProductImage() {
     </div>
   );
 }
-
 export default ProductImage;

@@ -10,7 +10,6 @@ function Footer() {
           <img
             src="/assets/images/Group (1).png"
             alt="logo"
-            
             style={{ padding: "", margin: "20px 30px 0px 30px" }}
             className="logo"
           />
@@ -46,10 +45,38 @@ function Footer() {
 
         <Col>
           <h5>سوشيال ميديا</h5>
-          <p>Facebook</p>
-          <p>Instagram</p>
-          <p>TikTok</p>
-          <p>LinkedIn</p>
+          <p>
+            <a
+              href="https://www.facebook.com/profile.php?id=61568220981761&mibextid=ZbWKwL"
+              target="blank"
+            >
+              Facebook
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://www.instagram.com/amgad_furniture202?igsh=NTFscXZlZmpiMm82"
+              target="blank"
+            >
+              Instagram
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://www.tiktok.com/@amgad_furniture0?_t=8rYes9Pa7w9&_r=1"
+              target="blank"
+            >
+              TikTok
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/amgad-furniture-37452433a/"
+              target="blank"
+            >
+              LinkedIn
+            </a>
+          </p>
         </Col>
 
         <Col>
@@ -58,26 +85,21 @@ function Footer() {
             <img
               src="/assets/images/whatsapp-svgrepo-com (2).png"
               alt="whatsapp"
-            />{" "}
-            2015555565 +
+              style={{margin:"3px 0px 0px 10px"}}
+            />
+            201559007451 +
           </p>
           <p>
             <img
               src="/assets/images/phone-svgrepo-com.png"
               alt="phone number"
-            />{" "}
-            956631462144 +
+              style={{margin:"3px 0px 0px 10px"}}
+            />
+            201559007451 +
           </p>
           <p>
-            <img
-              src="/assets/images/phone-svgrepo-com (1).png"
-              alt="phone number"
-            />{" "}
-            956631462144 +
-          </p>
-          <p>
-            <img src="/assets/images/mail-svgrepo-com.png" alt="mail" />{" "}
-            amjad@gmail.com
+            <img src="/assets/images/mail-svgrepo-com.png" alt="mail"   style={{margin:"2px 0px -2px 10px"}}/>
+            <a href="https://www.amgadfurniture202@gmail.com" target="blank" style={{color:"#000" , textDecoration:"none" , fontWeight:"bolder"}}>amgadfurniture202@gmail.com</a>
           </p>
         </Col>
       </Row>
@@ -88,5 +110,4 @@ function Footer() {
     </div>
   );
 }
-
 export default Footer;

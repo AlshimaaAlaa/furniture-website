@@ -21,7 +21,7 @@ function CategoryDetails() {
         );
         const result = await response.json();
         if (response.ok) {
-          console.log("Success", result);
+          console.log("Success get details", result);
           setProductDetail(result.data);
           // Set the first image as the default main image
           if (result.data.images && result.data.images.length > 0) {
@@ -95,13 +95,13 @@ function CategoryDetails() {
           }}
         >
           <img
-            src="/assets/images/cat.png"
-            alt="cat"
+            src={productDetail.category && productDetail.category.icon}
+            alt=""
             width={"20px"}
             style={{ margin: "0px 10px 0px 10px" }}
           />
           <p style={{ padding: "0px", textAlign: "center" }}>
-            {productDetail.category.name}
+            {productDetail.category && productDetail.category.name}
           </p>
         </div>
 
@@ -115,16 +115,13 @@ function CategoryDetails() {
             <li>العمق_سم : {productDetail.depth_cm || "لايوجد"}</li>
             <li>المخزون : {productDetail.stock || "لايوجد"}</li>
             <li>بلد_المنشأ : {productDetail.country_of_origin || " لايوجد"}</li>
+            <li>مادة الخشب : {productDetail.wood_material || " لايوجد"}</li>
+            <li>مادة القماش : {productDetail.fabric_material || " لايوجد"}</li>
             <li>
-              {productDetail.materials.map((material) => (
-                <div>
-                  <p style={{ margin: "0px 0px 0px 10px" }}>
-                    {material.name}
-                    <span style={{ margin: "0px 10px 0px 10px" }}>|</span>
-                    <span>{material.description}</span>
-                  </p>
-                </div>
-              ))}
+              مادة التنجيد : {productDetail.upholstery_material || " لايوجد"}
+            </li>
+            <li>
+              مدة الضمان بالشهر: {productDetail.warranty_months || " لايوجد"}
             </li>
           </ul>
         </div>
@@ -132,5 +129,4 @@ function CategoryDetails() {
     </div>
   );
 }
-
 export default CategoryDetails;

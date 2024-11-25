@@ -28,7 +28,6 @@ function Header() {
             }}
           >
             في أمجاد، نقدم للمعارض والشركات صالونات كلاسيك ونيو كلاسيك مصممة
-            {/* <br/> */}
             بدقة ومهارة مصرية، بتفاصيل تمثل أعلى معايير دقة وجودة التصنيع
           </p>
         </div>
@@ -55,8 +54,6 @@ function Header() {
             alignItems: "center",
             border: "1px solid lightgray",
             borderRadius: "50px",
-            // margin: "0px 50px 0px 20px ",
-            // height: "40px",
           }}
           className="amjad-media"
         >
@@ -74,12 +71,11 @@ function Header() {
           style={{
             border: "1px solid #00241B",
             borderRadius: "50px",
-            // height: "40px",
             display: "flex",
             alignItems: "center",
           }}
         >
-          <p onClick={()=>navigate('')} style={{ color: "#00241B", padding: "0px 15px 0px 10px" , cursor:"pointer" , fontWeight:"bolder" }}>
+          <p onClick={()=>navigate('/Modren')} style={{ padding: "0px 15px 0px 10px"  , fontWeight:"bolder" }} className="navigate-sallons">
             تصفح الصوالين
           </p>
         </div>

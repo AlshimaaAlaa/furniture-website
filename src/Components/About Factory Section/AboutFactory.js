@@ -88,5 +88,4 @@ function AboutFactory() {
     </div>
   );
 }
-
 export default AboutFactory;
