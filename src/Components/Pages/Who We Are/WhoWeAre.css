@@ -33,6 +33,10 @@
   padding: 0px 100px;
 }
 @media (max-width: 768px) {
+  .whoweareContainer {
+    margin-top: 50px;
+    z-index: -1;
+  }
   .item1 {
     border: 1px solid lightgray;
     border-radius: 10px;
