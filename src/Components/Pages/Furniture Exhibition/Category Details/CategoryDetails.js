@@ -6,9 +6,12 @@ function CategoryDetails() {
   const { id } = useParams();
   const [productDetail, setProductDetail] = useState(null);
   const [mainImage, setMainImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function getProductDetails() {
+      setLoading(true);
       try {
         const response = await fetch(
           `http://104.248.251.235:8080/products/${id}/`,
@@ -21,33 +24,63 @@ function CategoryDetails() {
         );
         const result = await response.json();
         if (response.ok) {
-          console.log("Success get details", result);
           setProductDetail(result.data);
           // Set the first image as the default main image
           if (result.data.images && result.data.images.length > 0) {
             setMainImage(result.data.images[0].image);
           }
+          setLoading(false);
         } else {
-          console.error("Failed to fetch product details");
+          setError("Failed to fetch product details");
+          setLoading(false);
         }
       } catch (error) {
-        console.error("Error:", error);
+        setError("An error occurred while fetching data");
+        setLoading(false);
       }
     }
     getProductDetails();
   }, [id]);
+
+  if (loading) {
+    return (
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "30px",
+          fontFamily: "Amiri",
+        }}
+      >
+        جاري تحميل البيانات....
+      </p>
+    );
+  }
+
+  if (error) {
+    return (
+      <p
+        className="text-danger"
+        style={{
+          textAlign: "center",
+          fontSize: "30px",
+          fontFamily: "Amiri",
+        }}
+      >
+        حدث خطأ أثناء تحميل البيانات
+      </p>
+    );
+  }
 
   if (!productDetail) {
     return (
       <p
         style={{
           textAlign: "center",
-          fontSize: "40px",
-          marginTop: "100px",
-          fontFamily: "Dancing Script",
+          fontSize: "30px",
+          fontFamily: "Amiri",
         }}
       >
-        Loading...
+        لا يوجد منتجات لعرضها في الوقت الحالي
       </p>
     );
   }
@@ -55,31 +88,33 @@ function CategoryDetails() {
   return (
     <div className="category-details">
       <div className="image-section">
-        <div className="main-image">
-          <img src={mainImage} alt="Main Product" />
-        </div>
-
-        <div className="thumbnails">
-          {productDetail.images.map((image, index) => (
-            <img
-              key={index}
-              src={image.image}
-              alt={`Thumbnail ${index + 1}`}
-              onClick={() => setMainImage(image.image)}
-              className={mainImage === image.image ? "active" : ""}
-            />
-          ))}
-        </div>
+        {mainImage && (
+          <div className="main-image">
+            <img src={mainImage} alt="Main Product" />
+          </div>
+        )}
+        {productDetail.images && productDetail.images.length > 0 && (
+          <div className="thumbnails">
+            {productDetail.images.map((image, index) => (
+              <img
+                key={index}
+                src={image.image}
+                alt={`Thumbnail ${index + 1}`}
+                onClick={() => setMainImage(image.image)}
+                className={mainImage === image.image ? "active" : ""}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div>
         <div className="product-details">
-          <h1 style={{}}>{productDetail.name}</h1>
+          <h1>{productDetail.name}</h1>
           <p style={{ textAlign: "left", fontWeight: "bolder" }}>
             {productDetail.price} جنية
           </p>
           <p>{productDetail.description}</p>
         </div>
-
         <div
           className="product-category"
           style={{
@@ -94,17 +129,20 @@ function CategoryDetails() {
             justifyContent: "center",
           }}
         >
-          <img
-            src={productDetail.category && productDetail.category.icon}
-            alt=""
-            width={"20px"}
-            style={{ margin: "0px 10px 0px 10px" }}
-          />
+          {productDetail.category && productDetail.category.icon && (
+            <img
+              src={productDetail.category.icon}
+              alt=""
+              width={"20px"}
+              style={{ margin: "0px 10px 0px 10px" }}
+            />
+          )}
           <p style={{ padding: "0px", textAlign: "center" }}>
-            {productDetail.category && productDetail.category.name}
+            {productDetail.category
+              ? productDetail.category.name
+              : "No Category"}
           </p>
         </div>
-
         <div className="product-specifications">
           <h3 style={{ marginTop: "30px" }}>المواصفات</h3>
           <ul>
@@ -114,14 +152,14 @@ function CategoryDetails() {
             <li>الارتفاع_سم : {productDetail.height_cm || "لا يوجد"}</li>
             <li>العمق_سم : {productDetail.depth_cm || "لايوجد"}</li>
             <li>المخزون : {productDetail.stock || "لايوجد"}</li>
-            <li>بلد_المنشأ : {productDetail.country_of_origin || " لايوجد"}</li>
-            <li>مادة الخشب : {productDetail.wood_material || " لايوجد"}</li>
-            <li>مادة القماش : {productDetail.fabric_material || " لايوجد"}</li>
+            <li>بلد_المنشأ : {productDetail.country_of_origin || "لايوجد"}</li>
+            <li>مادة الخشب : {productDetail.wood_material || "لايوجد"}</li>
+            <li>مادة القماش : {productDetail.fabric_material || "لايوجد"}</li>
             <li>
-              مادة التنجيد : {productDetail.upholstery_material || " لايوجد"}
+              مادة التنجيد : {productDetail.upholstery_material || "لايوجد"}
             </li>
             <li>
-              مدة الضمان بالشهر: {productDetail.warranty_months || " لايوجد"}
+              مدة الضمان بالشهر: {productDetail.warranty_months || "لايوجد"}
             </li>
           </ul>
         </div>
@@ -129,4 +167,5 @@ function CategoryDetails() {
     </div>
   );
 }
+
 export default CategoryDetails;

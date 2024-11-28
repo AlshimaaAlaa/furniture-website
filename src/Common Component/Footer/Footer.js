@@ -45,34 +45,38 @@ function Footer() {
 
         <Col>
           <h5>سوشيال ميديا</h5>
-          <p>
+          <p style={{display:"flex" , alignItems:"center"}}>
+            <img src="/assets/images/facebook.png" alt="facebook" width={'16px'} style={{margin:"0px 0px 0px 10px"}}/>
             <a
               href="https://www.facebook.com/profile.php?id=61568220981761&mibextid=ZbWKwL"
-              target="blank"
+              target="_blank" rel="noreferrer"
             >
               Facebook
             </a>
           </p>
-          <p>
+          <p style={{display:"flex" ,alignItems:"center"}}>
+            <img src="/assets/images/instegram.png" alt="instegram" width={'16px'} style={{margin:"0px 0px 0px 10px"}}/>
             <a
               href="https://www.instagram.com/amgad_furniture202?igsh=NTFscXZlZmpiMm82"
-              target="blank"
+              target="_blank" rel="noreferrer"
             >
               Instagram
             </a>
           </p>
-          <p>
+          <p style={{display:"flex" ,alignItems:"center"}}>
+            <img src="/assets/images/3046120.png" alt="tiktok" width={'16px'} style={{margin:"0px 0px 0px 10px"}}/>
             <a
               href="https://www.tiktok.com/@amgad_furniture0?_t=8rYes9Pa7w9&_r=1"
-              target="blank"
+              target="_blank" rel="noreferrer"
             >
               TikTok
             </a>
           </p>
-          <p>
+          <p style={{display:"flex" ,alignItems:"center"}}>
+            <img src="/assets/images/linkedin.png" alt="linkedin" width={'16px'} style={{margin:'0px 0px 0px 10px'}}/>
             <a
               href="https://www.linkedin.com/in/amgad-furniture-37452433a/"
-              target="blank"
+              target="_blank" rel="noreferrer"
             >
               LinkedIn
             </a>

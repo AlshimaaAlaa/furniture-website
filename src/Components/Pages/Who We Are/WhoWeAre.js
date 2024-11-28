@@ -362,7 +362,7 @@ function WhoWeAre() {
           </Col>
         </Row>
         {/* vedios */}
-        <div>
+        {/* <div>
           <div
             style={{ marginTop: "50px", display: "flex", alignItems: "center" }}
           >
@@ -381,7 +381,7 @@ function WhoWeAre() {
           >
             <img src="/assets/images/Component 6.png" alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

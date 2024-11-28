@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 function Modren() {
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [sortOption, setSortOption] = useState("none");
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchProducts() {
+      setLoading(true);
       try {
         const response = await axios.get(
           "http://104.248.251.235:8080/products/",
@@ -21,32 +22,32 @@ function Modren() {
             },
           }
         );
-  
+
         if (response.data.status === "success") {
+          setLoading(false)
           console.log("success modren");
           // Filter products with a valid category and name "Modern"
           const modernProducts = response.data.data.filter(
             (product) => product.category && product.category.name === "Modern"
           );
           setProducts(modernProducts);
-          setSortedProducts(modernProducts); 
+          setSortedProducts(modernProducts);
         } else {
-          setError("Failed to fetch products.");
+          setLoading(true);
+          setError(error);
         }
       } catch (err) {
-        setError("Error fetching data.");
-        console.error("Error fetching data:", err);
-      } finally {
         setLoading(false);
+        setError(error);
+        console.error("Error fetching data:", err);
       }
     }
-  
+
     fetchProducts();
   }, []);
-  
 
   useEffect(() => {
-    // Sort products 
+    // Sort products
     let sorted = [...products];
     if (sortOption === "low-to-high") {
       sorted.sort((a, b) => a.price - b.price);
@@ -55,34 +56,6 @@ function Modren() {
     }
     setSortedProducts(sorted);
   }, [sortOption, products]);
-
-  if (loading)
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "40px",
-          marginTop: "100px",
-          fontFamily: "Dancing Script",
-        }}
-      >
-        Loading...
-      </div>
-    );
-  if (error)
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "40px",
-          marginTop: "100px",
-          color: "red",
-          fontFamily: "Dancing Script",
-        }}
-      >
-        {error}
-      </div>
-    );
 
   return (
     <div className="modern">
@@ -126,38 +99,70 @@ function Modren() {
       </div>
 
       <div className="products">
-        <ul className="product-list">
-          {sortedProducts.map((product) => (
-            <li
-              key={product.id}
-              className="product-item"
-              onClick={() => navigate(`/Modren/${product.id}`)}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="product-images">
-                {product.images.map((image) => (
-                  <img
-                    key={image.id}
-                    src={image.image}
-                    alt={`Product${product.name}image`}
-                  />
-                ))}
-              </div>
-              <div
-                className="detail"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                }}
+        {error ? (
+          <p
+            className="text-danger"
+            style={{
+              textAlign: "center",
+              fontSize: "30px",
+              fontFamily: "Amiri",
+            }}
+          >
+            حدث خطأ أثناء تحميل البيانات...
+          </p>
+        ) : loading ? (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "30px",
+              fontFamily: "Amiri",
+            }}
+          >
+            جاري تحميل البيانات....
+          </p>
+        ) : products.length === 0 ? (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "30px",
+              fontFamily: "Amiri",
+            }}
+          >
+            لا يوجد منتجات لعرضها في الوقت الحالي
+          </p>
+        ) : (
+          <ul className="product-list">
+            {sortedProducts.map((product) => (
+              <li
+                key={product.id}
+                className="product-item"
+                onClick={() => navigate(`/Modren/${product.id}`)}
+                style={{ cursor: "pointer" }}
               >
-                <h3>{product.name}</h3>
-                <p>{product.price} جنية</p>
-              </div>
-              <hr />
-            </li>
-          ))}
-        </ul>
+                <div className="product-images">
+                  {product.images.map((image) => (
+                    <img
+                      key={image.id}
+                      src={image.image}
+                      alt={`Product${product.name}image`}
+                    />
+                  ))}
+                </div>
+                <div
+                  className="detail"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <h3>{product.name}</h3>
+                  <p>{product.price} جنية</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

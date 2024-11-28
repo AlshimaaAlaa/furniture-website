@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-operators */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Classic.scss";
@@ -8,47 +7,47 @@ function Classic() {
   const [products, setProducts] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const [sortOption, setSortOption] = useState("none");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchProducts() {
+      setLoading(true);
+      setError("");
       try {
         const response = await axios.get(
           "http://104.248.251.235:8080/products/",
-          {
-            headers: {
-              accept: "application/json",
-            },
-          }
+          { headers: { accept: "application/json" } }
         );
-  
+
         if (response.data.status === "success") {
-          console.log("success modren");
-          // Filter products with a valid category and name "Modern"
-          const modernProducts = response.data.data.filter(
-            (product) => product.category && product.category.name === "كلاسيك"  || "classic"
+          setLoading(false);
+          const classicProducts = response.data.data.filter(
+            (product) =>
+              product.category &&
+              (product.category.name === "كلاسيك" ||
+                product.category.name === "classic")
           );
-          setProducts(modernProducts);
-          setSortedProducts(modernProducts); 
+          setProducts(classicProducts);
+          setSortedProducts(classicProducts);
         } else {
-          setError("Failed to fetch products.");
+          setLoading(false);
+          setError(error);
         }
       } catch (err) {
-        setError("Error fetching data.");
-        console.error("Error fetching data:", err);
-      } finally {
         setLoading(false);
+        setError(error);
+        console.error("Error fetching data:", err);
       }
     }
-  
+
     fetchProducts();
   }, []);
-  
+
   useEffect(() => {
     // Sort products
-    let sorted = [...products];
+    const sorted = [...products];
     if (sortOption === "low-to-high") {
       sorted.sort((a, b) => a.price - b.price);
     } else if (sortOption === "high-to-low") {
@@ -57,33 +56,6 @@ function Classic() {
     setSortedProducts(sorted);
   }, [sortOption, products]);
 
-  if (loading)
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "40px",
-          marginTop: "100px",
-          fontFamily: "Dancing Script",
-        }}
-      >
-        Loading...
-      </div>
-    );
-  if (error)
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: "40px",
-          marginTop: "100px",
-          color: "red",
-          fontFamily: "Dancing Script",
-        }}
-      >
-        {error}
-      </div>
-    );
 
   return (
     <div className="classic">
@@ -92,9 +64,10 @@ function Classic() {
           src="/assets/images/gallery-round-svgrepo-com 1.png"
           alt="classic"
         />
-        <p style={{ fontWeight: "bolder", margin: "0px 10px 0px 10px" }}>
+        <p style={{ fontWeight: "bolder", margin: "0px 10px" }}>
           المعرض
-          <span style={{ color: "lightgray", margin: "0px 5px 0px 5px" }}>
+          <span style={{ color: "lightgray", margin: "0px 5px" }}>
+            {" "}
             / أثاث كلاسيك
           </span>
         </p>
@@ -106,14 +79,14 @@ function Classic() {
           htmlFor="sort"
           style={{ margin: "10px", fontWeight: "bold", display: "inline" }}
         >
-          ترتيب حسب :
+          ترتيب حسب:
         </label>
         <select
           id="sort"
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
           style={{
-            padding: "5px 20px 5px 20px",
+            padding: "5px 20px",
             border: "1px solid #ccc",
             borderRadius: "4px",
             cursor: "pointer",
@@ -125,46 +98,80 @@ function Classic() {
           <option value="high-to-low">السعر من الأعلى إلى الأقل</option>
         </select>
       </div>
+
       <div className="products">
-        <ul className="product-list">
-          {sortedProducts.map((product) => (
-            <li
-              key={product.id}
-              className="product-item"
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate(`/Classic/${product.id}`)}
-            >
-              <div className="product-images">
-                {product.images.length > 0 ? (
-                  product.images.map((image) => (
-                    <img
-                      key={image.id}
-                      src={image.image}
-                      alt={`Product${product.name}image`}
-                      style={{ width: "150px", margin: "5px" }}
-                    />
-                  ))
-                ) : (
-                  <></>
-                )}
-              </div>
-              <div
-                className="detail"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                }}
+        {error ? (
+          <p
+            className="text-danger"
+            style={{
+              textAlign: "center",
+              fontSize: "30px",
+              fontFamily: "Amiri",
+            }}
+          >
+            حدث خطأ اخترأثناء تحميل البيانات...
+          </p>
+        ) : loading ? (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "30px",
+              fontFamily: "Amiri",
+            }}
+          >
+            جاري تحميل البيانات....
+          </p>
+        ) : products.length === 0 ? (
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "30px",
+              fontFamily: "Amiri",
+            }}
+          >
+            لا يوجد منتجات لعرضها في الوقت الحالي
+          </p>
+        ) : (
+          <ul className="product-list">
+            {sortedProducts.map((product) => (
+              <li
+                key={product.id}
+                className="product-item"
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/Classic/${product.id}`)}
               >
-                <h3>{product.name}</h3>
-                <p>{product.price} جنية</p>
-              </div>
-              <hr />
-            </li>
-          ))}
-        </ul>
+                <div className="product-images">
+                  {product.images && product.images.length > 0 ? (
+                    product.images.map((image) => (
+                      <img
+                        key={image.id}
+                        src={image.image}
+                        alt={`Product${product.name}image`}
+                        style={{ width: "150px", margin: "5px" }}
+                      />
+                    ))
+                  ) : (
+                    <p>لا توجد صور متاحة</p>
+                  )}
+                </div>
+                <div
+                  className="detail"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <h3>{product.name}</h3>
+                  <p>{product.price} جنية</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
 }
+
 export default Classic;
