@@ -5,7 +5,6 @@ function ProductImage() {
   const [productImages, setProductImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     async function fetchProductImages() {
       setLoading(true);
@@ -76,7 +75,7 @@ function ProductImage() {
           <h1 style={{ textAlign: "center" }}>منتجات اكثر مبيعا</h1>
           <p style={{ textAlign: "center" }}>تصفح مختلف الصوالين الموجودة</p>
           <div className="product-image-gallery" style={{ marginTop: "50px" }}>
-            {productImages.map((image, index) => (
+            {productImages.slice(0,8).map((image, index) => (
               <img key={index} src={image} alt="product-image" />
             ))}
           </div>
