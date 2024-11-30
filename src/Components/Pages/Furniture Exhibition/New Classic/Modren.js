@@ -151,13 +151,13 @@ function Modren() {
                 <div
                   className="detail"
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-around",
+                    // display: "flex",
+                    // alignItems: "center",
+                    // justifyContent: "space-around",
                   }}
                 >
                   <h3>{product.name}</h3>
-                  <p>{product.price} جنية</p>
+                  <p style={{fontWeight:"bolder"}}>السعر : <span style={{fontWeight:"lighter" , margin:"10px 5px 0px 0px"}}>{product.price} جنية </span></p>
                 </div>
               </li>
             ))}
