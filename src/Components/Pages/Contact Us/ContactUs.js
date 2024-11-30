@@ -277,7 +277,7 @@ function ContactUs() {
           <div style={{ textAlign: "center" }}>
             <div>
               <img
-                src="/assets/images/done.png"
+                src="/assets/images/success-achievement-award-medal-winner-svgrepo-com 1.png"
                 alt="success"
                 width={"120px"}
               />

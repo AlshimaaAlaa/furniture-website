@@ -9,7 +9,7 @@ function ProductImage() {
     async function fetchProductImages() {
       setLoading(true);
       try {
-        const response = await fetch("http://104.248.251.235:8080/products/", {
+        const response = await fetch("http://104.248.251.235:8080/products/?best_seller=true", {
           method: "GET",
           headers: {
             accept: "application/json",
@@ -75,7 +75,7 @@ function ProductImage() {
           <h1 style={{ textAlign: "center" }}>منتجات اكثر مبيعا</h1>
           <p style={{ textAlign: "center" }}>تصفح مختلف الصوالين الموجودة</p>
           <div className="product-image-gallery" style={{ marginTop: "50px" }}>
-            {productImages.slice(0,8).map((image, index) => (
+            {productImages.map((image, index) => (
               <img key={index} src={image} alt="product-image" />
             ))}
           </div>
