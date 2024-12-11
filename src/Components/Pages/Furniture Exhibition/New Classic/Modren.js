@@ -24,7 +24,7 @@ function Modren() {
         );
 
         if (response.data.status === "success") {
-          setLoading(false)
+          setLoading(false);
           console.log("success modren");
           // Filter products with a valid category and name "Modern"
           const modernProducts = response.data.data.filter(
@@ -44,7 +44,7 @@ function Modren() {
     }
 
     fetchProducts();
-  }, []);
+  }, [error]);
 
   useEffect(() => {
     // Sort products
@@ -148,16 +148,19 @@ function Modren() {
                     />
                   ))}
                 </div>
-                <div
-                  className="detail"
-                  style={{
-                    // display: "flex",
-                    // alignItems: "center",
-                    // justifyContent: "space-around",
-                  }}
-                >
+                <div className="detail">
                   <h3>{product.name}</h3>
-                  <p style={{fontWeight:"bolder"}}>السعر : <span style={{fontWeight:"lighter" , margin:"10px 5px 0px 0px"}}>{product.price} جنية </span></p>
+                  <p style={{ fontWeight: "bolder" }}>
+                    السعر :{" "}
+                    <span
+                      style={{
+                        fontWeight: "lighter",
+                        margin: "10px 5px 0px 0px",
+                      }}
+                    >
+                      {product.price} جنية{" "}
+                    </span>
+                  </p>
                 </div>
               </li>
             ))}

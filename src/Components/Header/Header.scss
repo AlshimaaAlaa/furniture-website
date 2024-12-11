@@ -1,6 +1,6 @@
 .headerContainer {
   font-family: "Tajawal", sans-serif;
-  padding: 100px 100px 100px 0px;
+  padding: 60px;
   .amjad {
     p {
       width: 400px;
@@ -12,16 +12,33 @@
     }
   }
   .amjad-media {
-    height: 40px;
-    margin: 0px 50px 0px 20px;
+    height: 45px;
+    width: 270px;
+    margin: 0px 50px 0px 0px;
+    &:hover{
+      background-color: #260701;
+      color: #fff;
+    }
   }
   .sallon {
     margin: 0px 20px 0px 20px;
-    height: 40px;
+    height: 45px;
+    width: 200px;
     cursor: pointer;
-      &:hover{
-        background-color: #260701;
-        color: #fff;
+    &:hover {
+      background-color: #260701;
+      color: #fff;
+    }
+  }
+  .close-vedio{
+    color: #fff;
+    border: none;
+    &:hover{
+      background-color: transparent;
+      border-radius: 10px;
+      border: 2px solid #260701;
+      color: #000;
+      font-weight: bolder;
     }
   }
   .reasons {
@@ -31,7 +48,7 @@
     border-radius: 50px;
     border: 1px solid lightgrey;
     width: 90%;
-    margin: 50px auto;
+    margin: 100px auto;
     p {
       margin-bottom: 0px;
       padding: 0px 10px 0px 10px;

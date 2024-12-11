@@ -10,9 +10,7 @@ function Policy() {
         </div>
         <p>
           نحن في
-          <span className="span" >
-            “أمجاد”
-          </span>
+          <span className="span">“أمجاد”</span>
           نحترم خصوصية زوار موقعنا ونعمل بجد لحماية أي معلومات شخصية يتم جمعها
           منك. توضح سياسة الخصوصية هذه كيفية جمع
           <br /> واستخدام وحماية معلوماتك الشخصية عند زيارتك لموقعنا.
@@ -128,16 +126,28 @@ function Policy() {
           إذا كانت لديك أي استفسارات أو مخاوف بخصوص سياسة الخصوصية، يُرجى
           التواصل معنا عبر:
           <br />
-          <span style={{ fontWeight: "lighter", margin: "0px 10px 0px 10px" }}>
-            البريد الإلكتروني: amgad@gmail.com
+          <span style={{ margin: "0px 5px 0px 5px", fontWeight: "lighter" }}>
+            ✉️ البريد الإلكتروني: [
+            <a
+              style={{
+                textDecoration: "none",
+                color: "darkblue",
+                fontWeight: "bolder",
+              }}
+              href="http://www.amgadfurniture202@gmail.com"
+              target="blank"
+            >
+              amgadfurniture202@gmail.com
+            </a>
+            ]
           </span>
           <br />
           <span style={{ fontWeight: "lighter", margin: "0px 10px 0px 10px" }}>
-            الهاتف: +020102464669
+            الهاتف: 01559007451
           </span>
           <br />
           <span style={{ fontWeight: "lighter", margin: "0px 10px 0px 10px" }}>
-            العنوان: مصر - دمياط - باب الحرس
+            العنوان: دمياط / شطا أمام الحمايه المدنية
           </span>
         </p>
       </div>

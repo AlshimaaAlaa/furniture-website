@@ -8,14 +8,14 @@ function Items() {
       <div className="item">
         <div style={{ padding: "0px 20px 0px 20px" }}>
           <h3>اثاث نيو كلاسيك</h3>
-          <button onClick={()=>navigate('/Modren')} style={{cursor:"pointer"}}> تصفح الأن</button>
+          <button onClick={()=>navigate('/Modren')} style={{cursor:"pointer"}} className="navigate"> تصفح الأن</button>
         </div>
           <img src="/assets/images/Image Product (2).png" alt="product" />
       </div>
       <div className="item">
         <div style={{ padding: "0px 20px 0px 20px" }}>
           <h3>اثاث كلاسيكي</h3>
-          <button style={{cursor:"pointer"}} onClick={()=>navigate('/Classic')}> تصفح الأن</button>
+          <button style={{cursor:"pointer"}} onClick={()=>navigate('/Classic')} className="navigate"> تصفح الأن</button>
         </div>
           <img src="/assets/images/Image Product (4).png" alt="product" />
       </div>

@@ -102,7 +102,7 @@ function ContactUs() {
           </span>
           <br />
           <span style={{ margin: "0px 5px 0px 5px" }}>
-            ✉️ البريد الإلكتروني: [{" "}
+            ✉️ البريد الإلكتروني: [
             <a
               style={{
                 textDecoration: "none",
@@ -113,7 +113,7 @@ function ContactUs() {
               target="blank"
             >
               amgadfurniture202@gmail.com
-            </a>{" "}
+            </a>
             ]
           </span>
         </div>
@@ -153,7 +153,7 @@ function ContactUs() {
               href="https://www.instagram.com/amgad_furniture202/"
               target="blank"
             >
-              https://www.instagram.com/amgad_furniture202/
+              https://www.instagram.com/amgad_furniture202
             </a>
             ]
           </span>
@@ -169,7 +169,7 @@ function ContactUs() {
               href="https://www.linkedin.com/in/amgad-furniture-37452433a/"
               target="blank"
             >
-              https://www.linkedin.com/in/amgad-furniture-37452433a/
+              https://www.linkedin.com/in/amgad-furniture-37452433a
             </a>
             ]
           </span>

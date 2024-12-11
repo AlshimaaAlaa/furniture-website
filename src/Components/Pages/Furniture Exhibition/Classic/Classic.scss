@@ -13,9 +13,6 @@
       }
     }
   }
-  .detail {
-    // width: 250px;
-  }
   .filterContainer {
     text-align: left;
     margin: 0px 0px 50px 0px;
@@ -24,19 +21,19 @@
 @media (max-width: 768px) {
   .classic {
     font-family: "Tajawal", sans-serif;
-    padding: 50px 20px;
+    padding: 50px 0px;
     margin-top: 50px;
 
     ul {
       list-style: none;
     }
     .product-images {
-      margin-top: 20px;
+      margin: 20px auto;
       display: grid;
       gap: 5px;
       grid-template-columns: repeat(1, 1fr);
       img {
-        width: 260px;
+        width: 300px !important;
         height: 150px;
         border-radius: 5px;
       }

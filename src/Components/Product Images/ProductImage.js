@@ -35,7 +35,7 @@ function ProductImage() {
       }
     }
     fetchProductImages();
-  }, []);
+  }, [error]);
 
   return (
     <div className="products" style={{ padding: "0px 70px 70px 70px" }}>

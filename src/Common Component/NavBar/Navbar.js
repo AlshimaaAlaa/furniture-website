@@ -14,7 +14,8 @@ function Navbar() {
               <a
                 href="https://www.amgadfurniture202@gmail.com "
                 target="_blank"
-                style={{ textDecoration: "none", color: "#000" }} rel="noreferrer"
+                style={{ textDecoration: "none", color: "#000" }}
+                rel="noreferrer"
               >
                 amgadfurniture202@gmail.com
               </a>
@@ -29,25 +30,29 @@ function Navbar() {
         <div className="social">
           <a
             href="https://www.tiktok.com/@amgad_furniture0?_t=8rYes9Pa7w9&_r=1"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             <img src="/assets/images/3046120.png" alt="TikTok" />
           </a>
           <a
             href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEfoA2V7BXt7QAAAZNkYzrIA16gkG6sUS2OwNhc9g15akqwprij5chNWJNFhZLL_99-LTxfAiGioaxG6nzKm2nkOhCt_N2tmls9aAHBf1bxGaMfQFhQfgSJ8T6YDF6FL2wm3pc=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Famgad-furniture-37452433a%2F"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             <img src="/assets/images/linkedin.png" alt="LinkedIn" />
           </a>
           <a
             href="https://www.instagram.com/amgad_furniture202/"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             <img src="/assets/images/instegram.png" alt="Instagram" />
           </a>
           <a
             href="https://www.facebook.com/people/%D8%A3%D9%85%D9%80%D8%AC%D8%A7%D8%AF/61568220981761/"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             <img src="/assets/images/facebook.png" alt="Facebook" />
           </a>
@@ -55,13 +60,16 @@ function Navbar() {
       </div>
       <hr className="hr" />
       <div className="navbar-bottom">
-        <img
-          className="logo"
-          src="/assets/images/Group (2).png"
-          alt="logo"
-          width="93px"
-          height="65px"
-        />
+        <a href="/">
+          <img
+            className="logo"
+            src="/assets/images/Group (2).png"
+            alt="logo"
+            width="93px"
+            height="65px"
+          />
+        </a>
+
         <div
           className={`hamburger ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}

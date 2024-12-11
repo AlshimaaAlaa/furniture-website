@@ -43,7 +43,7 @@ function Classic() {
     }
 
     fetchProducts();
-  }, []);
+  }, [error]);
 
   useEffect(() => {
     // Sort products
@@ -55,7 +55,6 @@ function Classic() {
     }
     setSortedProducts(sorted);
   }, [sortOption, products]);
-
 
   return (
     <div className="classic">
@@ -147,23 +146,25 @@ function Classic() {
                         key={image.id}
                         src={image.image}
                         alt={`Product${product.name}image`}
-                        style={{ width: "150px", margin: "5px" }}
                       />
                     ))
                   ) : (
                     <p>لا توجد صور متاحة</p>
                   )}
                 </div>
-                <div
-                  className="detail"
-                  style={{
-                    // display: "flex",
-                    // alignItems: "center",
-                    // justifyContent: "space-around",
-                  }}
-                >
+                <div className="detail">
                   <h3>{product.name}</h3>
-                  <p style={{fontWeight:"bolder"}}>السعر : <span style={{fontWeight:"lighter" , margin:"10px 5px 0px 0px"}}>{product.price} جنية </span></p>
+                  <p style={{ fontWeight: "bolder" }}>
+                    السعر :{" "}
+                    <span
+                      style={{
+                        fontWeight: "lighter",
+                        margin: "10px 5px 0px 0px",
+                      }}
+                    >
+                      {product.price} جنية{" "}
+                    </span>
+                  </p>
                 </div>
               </li>
             ))}
@@ -173,5 +174,4 @@ function Classic() {
     </div>
   );
 }
-
 export default Classic;
